@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>Find Passenger</title>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h3>Find Passenger</h3>
+    <hr>
+
+    <p class="h4 mb-4">Find Passenger</p>
+
+    <form action="#" th:action="@{/passengers/query}"
+          th:object="${route}"
+          method="POST">
+
+        <!-- Add hidden form field to handle update -->
+        <input type="hidden" th:field="*{codeRoute}"/>
+        <input type="hidden" th:field="*{price}"/>
+
+        <input type="text" th:field="*{destination}"
+               class="form-control mb-4 col-4" placeholder="Destination">
+
+        <input type="text" th:field="*{planeClass}"
+               class="form-control mb-4 col-4" placeholder="Class">
+
+        <button type="submit" class="btn btn-info col-2">Find</button>
+
+    </form>
+
+    <hr>
+    <a th:href="@{/passengers/list}">Back to Passenger List</a>
+
+</div>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+

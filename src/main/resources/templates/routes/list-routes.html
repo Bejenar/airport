@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>Route Directory</title>
+</head>
+
+<body>
+
+<div class="container">
+
+	<h3>Route Directory</h3>
+	<hr>
+	
+	<!-- Add a button -->
+	<a th:href="@{/routes/showFormForAdd}"
+		class="btn btn-primary btn-sm mb-3">
+		Add Route
+	</a>
+
+	<a th:href="@{/passengers/list}"
+	   class="btn btn-primary btn-sm mb-3">
+		List Passengers
+	</a>
+	
+	<table class="table table-bordered table-striped">
+		<thead class="thead-dark">
+			<tr>
+				<th>Destination</th>
+				<th>Class</th>
+				<th>Price</th>
+				<th>Passenger</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr th:each="route : ${routes}">
+			
+				<td th:text="${route.destination}" />
+				<td th:text="${route.planeClass}" />
+				<td th:text="${route.price}" />
+				<td th:text="${route.passenger.surname + ' ' + route.passenger.name}" />
+				
+				<td>
+					<!-- Add "update" button/link -->
+					<a th:href="@{/routes/showFormForUpdate(routeId=${route.codeRoute})}"
+					   class="btn btn-info btn-sm">
+						Update
+					</a>
+					
+					<!-- Add "delete" button/link -->					
+					<a th:href="@{/routes/delete(routeId=${route.codeRoute})}"
+					   class="btn btn-danger btn-sm"
+					   onclick="if (!(confirm('Are you sure you want to delete this route?'))) return false">
+						Delete
+					</a>
+					
+				</td>
+				
+				
+			</tr>
+		</tbody>		
+	</table>
+	
+</div>
+	
+</body>
+</html>
+
+
+
